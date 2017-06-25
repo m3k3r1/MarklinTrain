@@ -44,5 +44,8 @@ public class Fix implements Constants{
 			fix[31] = FIX_31;
 			fix[32] = FIX_32;
 	}
+	public String getFix(int index){
+		return fix[index];
+	}
 }
 

@@ -3,8 +3,6 @@ package com.sample;
 import java.awt.Container;
 import javax.swing.JFrame;
 
-
-
 @SuppressWarnings("serial")
 public class GraphicalInterface extends JFrame {
 	
