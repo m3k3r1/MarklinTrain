@@ -1,23 +1,23 @@
 package com.sample;
 
 public class MarklinTrain implements Constants{
-	boolean componentes[];
+	Integer componentes[];
 	
 	public MarklinTrain(){
-		componentes = new boolean[TRAIN_COMPONENTS_SIZE];
+		componentes = new Integer[TRAIN_COMPONENTS_SIZE];
 		initializeComponents();
 	}
 	
 	private void initializeComponents(){
 		for(int i = 0; i < TRAIN_COMPONENTS_SIZE; i++ )
-			componentes[i] = false;
+			componentes[i] = -1;
 	}
 	
-	public boolean getComponente(int index){
+	public int getComponente(int index){
 		return componentes[index];
 	}
 	
-	public void setComponente(int index, boolean value){
+	public void setComponente(int index, int value){
 		componentes[index] = value;
 	}
 }
