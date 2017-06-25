@@ -18,6 +18,22 @@ rule "Acoplador de metal esta dobrado ?"
 			$t.setComponente(0, 0);
 			
 		update($t);
+end
 
+rule "Existe curto circuito entre corpo e fio ?"
+    salience 99
+    when
+        $t:MarklinTrain(getComponente(1)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("Existe curto circuito entre corpo e fio ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(0, 1);
+		else
+			$t.setComponente(0, 0);
+			
+		update($t);
 end
 

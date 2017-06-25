@@ -1,16 +1,16 @@
 package com.sample;
 
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-public class GraphicalPanel extends JPanel  implements Observer{
+import org.kie.api.KieServices;
+import org.kie.api.runtime.KieContainer;
+import org.kie.api.runtime.KieSession;
+
+@SuppressWarnings("serial")
+public class GraphicalPanel extends JPanel {
 	
 	MarklinTrain train;
 	
@@ -23,13 +23,8 @@ public class GraphicalPanel extends JPanel  implements Observer{
 	public GraphicalPanel(MarklinTrain t){
 		train = t;
 		
-		train.addObserver(this);
-		
 		setupComponents();
 		setupLayout();
-		setOpaque(false);
-		
-		update(train, this);
 	}
 	
 	private void setupComponents(){
@@ -38,8 +33,7 @@ public class GraphicalPanel extends JPanel  implements Observer{
 		 button3 = new JButton("Farol funciona ");
 		 button4 = new JButton("Catenária não funciona");
 		 button5 = new JButton("Não funciona numa direção ");
-	}
-	
+	}	
 	private void setupLayout(){
 		add(button1);
 		add(button2);
@@ -47,72 +41,39 @@ public class GraphicalPanel extends JPanel  implements Observer{
 		add(button4);
 		add(button5);
 		
-		button1.addActionListener(new Button1Listener());
+		button1.addActionListener(new ButtonListener(0));
+		button2.addActionListener(new ButtonListener(1));
+		button3.addActionListener(new ButtonListener(2));
+		button4.addActionListener(new ButtonListener(3));
+		button5.addActionListener(new ButtonListener(4));
 	}
-	
-	class Button1Listener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e){
-        	train.mark(1);
-        	train.mark(2);
-        	train.mark(3);
-        	train.mark(4);
-        }
-	}
-	
-	class Button2Listener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e){
-         	train.mark(0);
-        	train.mark(2);
-        	train.mark(3);
-        	train.mark(4);
-        }
-	}
-	
-	class Button3Listener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e){
-         	train.mark(0);
-        	train.mark(1);
-        	train.mark(3);
-        	train.mark(4);
 
-        }
-	}
-	
-	class Button4Listener implements ActionListener {
+	class ButtonListener implements ActionListener {
+		int l;
+		
+		public ButtonListener(int i){
+			l=i;
+		}
+		
+		private void setupDrools() {
+			KieServices ks = KieServices.Factory.get();
+			KieContainer kContainer = ks.getKieClasspathContainer();
+		    KieSession kSession = kContainer.newKieSession("ksession-rules");
+		    
+		    kSession.insert(train);
+		    kSession.fireAllRules() ;
+		}
+		
         @Override
         public void actionPerformed(ActionEvent e){
-         	train.mark(0);
-        	train.mark(1);
-        	train.mark(2);
-        	train.mark(4);
-
+        	for(int i = 0; i < 5; i++){
+        		if(i == l )
+        			continue;
+        		else
+        			train.mark(i);
+        	}
+        	setupDrools();
         }
-	}
-	
-	class Button5Listener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e){
-           	train.mark(0);
-        	train.mark(1);
-        	train.mark(2);
-        	train.mark(3);
-
-        }
-	}
-	
-	@Override
-	public void update(Observable o, Object arg) {
-		  
-	}
-	
-	
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Image background = Toolkit.getDefaultToolkit().createImage("background.png");
-            g.drawImage(background, 0, 0, this);
-    }
+        
+	}	
 }
