@@ -1,15 +1,11 @@
 package com.sample;
 
-<<<<<<< HEAD
 import java.util.Observable;
 
 public class MarklinTrain extends Observable implements Constants{
-	boolean componentes[];
-=======
-public class MarklinTrain implements Constants{
 	Integer componentes[];
->>>>>>> origin/master
-	
+	int nModel;
+
 	public MarklinTrain(){
 		componentes = new Integer[TRAIN_COMPONENTS_SIZE];
 		initializeComponents();
@@ -26,5 +22,9 @@ public class MarklinTrain implements Constants{
 	
 	public void setComponente(int index, int value){
 		componentes[index] = value;
+	}
+	
+	public void mark(int index){
+		
 	}
 }

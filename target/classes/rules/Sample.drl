@@ -6,101 +6,18 @@ import java.util.Scanner;
 rule "Acoplador de metal esta dobrado ?"
     salience 100
     when
-        $t:MarklinTrain(); 
+        $t:MarklinTrain(getComponente(0)==-1); 
     then
         Scanner input = new Scanner(System.in);
 		System.out.print("O acoplador de metal da locomotiva encontra-se dobrado ?");
 		String m = input.nextLine();
         
         if(m.equalsIgnoreCase("sim"))
-        	$t.setComponente(0, true);
+        	$t.setComponente(0, 1);
 		else
-			$t.setComponente(0, false);
+			$t.setComponente(0, 0);
 			
 		update($t);
 
 end
 
-rule "Existe curto circuito entre corpo e fio ?"
-    salience 99
-    when
-        $t:MarklinTrain(); 
-    then
-        Scanner input = new Scanner(System.in);
-		System.out.println("Existe curto circuito entre corpo e fio ?");
-		String m = input.nextLine();
-        
-        if(m.equalsIgnoreCase("sim"))
-        	$t.setComponente(1, true);
-		else
-			$t.setComponente(1, false);
-			
-		update($t);
-end
-
-rule "Existe curto circuito entre corpo e ponto de soldadura ?"
-    salience 98
-    when
-        $t:MarklinTrain(); 
-    then
-        Scanner input = new Scanner(System.in);
-		System.out.println("Existe curto circuito entre corpo e ponto de soldadura ?");
-		String m = input.nextLine();
-        
-        if(m.equalsIgnoreCase("sim"))
-        	$t.setComponente(2, true);
-		else
-			$t.setComponente(2, false);
-			
-		update($t);
-end
-rule "Algum fio de luz está a causar curto-circuito ?"
-    salience 98
-    when
-        $t:MarklinTrain(); 
-    then
-        Scanner input = new Scanner(System.in);
-		System.out.println("Algum fio de luz está a causar curto-circuito ?");
-		String m = input.nextLine();
-        
-        if(m.equalsIgnoreCase("sim"))
-        	$t.setComponente(3, true);
-		else
-			$t.setComponente(3, false);
-			
-		update($t);
-end
-
-rule "A alavanca seletora está configurada ? "
-    salience 97
-    when
-        $t:MarklinTrain(); 
-    then
-        Scanner input = new Scanner(System.in);
-		System.out.println("A alavanca seletora está configurada ?");
-		String m = input.nextLine();
-        
-        if(m.equalsIgnoreCase("nao"))
-        	$t.setComponente(4, true);
-		else
-			$t.setComponente(4, false);
-			
-		update($t);
-end
-
-rule "A parte superior da alavanca esta bem colocada ? "
-    salience 96
-    when
-        $t:MarklinTrain(); 
-    then
-        Scanner input = new Scanner(System.in);
-		System.out.println("A parte superior da alavanca esta bem colocada ?");
-		String m = input.nextLine();
-        
-        if(m.equalsIgnoreCase("nao"))
-        	$t.setComponente(3, true);
-		else
-			$t.setComponente(3, false);
-			
-		update($t);
-end

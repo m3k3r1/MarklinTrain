@@ -1,6 +1,5 @@
 package com.sample;
 
-import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -8,8 +7,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Observable;
 import java.util.Observer;
-
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -56,7 +53,52 @@ public class GraphicalPanel extends JPanel  implements Observer{
 	class Button1Listener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e){
-   
+        	train.mark(1);
+        	train.mark(2);
+        	train.mark(3);
+        	train.mark(4);
+        }
+	}
+	
+	class Button2Listener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e){
+         	train.mark(0);
+        	train.mark(2);
+        	train.mark(3);
+        	train.mark(4);
+        }
+	}
+	
+	class Button3Listener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e){
+         	train.mark(0);
+        	train.mark(1);
+        	train.mark(3);
+        	train.mark(4);
+
+        }
+	}
+	
+	class Button4Listener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e){
+         	train.mark(0);
+        	train.mark(1);
+        	train.mark(2);
+        	train.mark(4);
+
+        }
+	}
+	
+	class Button5Listener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e){
+           	train.mark(0);
+        	train.mark(1);
+        	train.mark(2);
+        	train.mark(3);
 
         }
 	}
@@ -65,6 +107,7 @@ public class GraphicalPanel extends JPanel  implements Observer{
 	public void update(Observable o, Object arg) {
 		  
 	}
+	
 	
     @Override
     protected void paintComponent(Graphics g) {
