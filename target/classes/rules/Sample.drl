@@ -1,0 +1,39 @@
+package com.sample
+ 
+import com.sample.MarklinTrain;
+import java.util.Scanner;
+
+rule "Acoplador de metal esta dobrado ?"
+    salience 100
+    when
+        $t:MarklinTrain(); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O acoplador de metal da locomotiva encontra-se dobrado ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(0, true);
+		else
+			$t.setComponente(0, false);
+			
+		update($t);
+
+end
+
+rule "Existe curto circuito entre corpo e fio ?"
+    salience 99
+    when
+        $t:MarklinTrain(); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.println("Existe curto circuito entre corpo e fio ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(1, true);
+		else
+			$t.setComponente(1, false);
+			
+		update($t);
+end
