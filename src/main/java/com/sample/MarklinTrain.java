@@ -103,4 +103,16 @@ public class MarklinTrain implements Constants{
 		}
 		return -1;
 	}
+	
+	public boolean hasAlternatives(){
+		for(int i = 0; i < 5; i++){
+			for(int o = 0; o < groups.get(i).size() - 1; o++){
+				if(componentes[groups.get(i).get(o)] == -1)
+					return true;
+			}	
+		}
+		
+		return false;
+	}
 }
+

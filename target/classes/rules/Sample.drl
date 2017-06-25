@@ -15,7 +15,16 @@ rule "FIX"
 	retract($train);
 end
 
-rule "Acoplador de metal esta dobrado?"
+rule "CANT FIX"
+	salience 70
+		when
+			$train:MarklinTrain(hasAlternatives()==false); 
+		then
+			System.out.print("Nao foi possivel encontrar nenhum arranjo");
+	retract($train);
+end
+
+rule "Acoplador de metal está dobrado?"
     salience 50
     when
         $t:MarklinTrain(getComponente(0)==-1); 
@@ -72,13 +81,506 @@ rule "Algum fio de luz está a causar curto-circuito?"
         $t:MarklinTrain(getComponente(3)==-1); 
     then
         Scanner input = new Scanner(System.in);
-		System.out.print("Algum fio de luz está a causar curto-circuito?");
+		System.out.print("Algum fio de luz esta a causar curto-circuito?");
 		String m = input.nextLine();
         
         if(m.equalsIgnoreCase("sim"))
         	$t.setComponente(3, 1);
 		else
 			$t.setComponente(3, 0);
+			
+		update($t);
+end
+
+rule "A alavanca seletora esta configurada?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(4)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("A alavanca seletora esta configurada?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(4, 1);
+		else
+			$t.setComponente(4, 0);
+			
+		update($t);
+end
+
+rule "A parte superior da alavanca esta bem colocada ?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(5)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("A parte superior da alavanca esta bem colocada ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(5, 1);
+		else
+			$t.setComponente(5, 0);
+			
+		update($t);
+end
+
+rule "Existe mau contacto entre placa de comutação na placa de contacto ?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(6)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("Existe mau contacto entre placa de comutação na placa de contacto ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(6, 1);
+		else
+			$t.setComponente(6, 0);
+			
+		update($t);
+end
+
+rule "Existe mau contacto entre o patim da locomotiva e o carril ?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(7)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("Existe mau contacto entre o patim da locomotiva e o carril ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(7, 1);
+		else
+			$t.setComponente(7, 0);
+			
+		update($t);
+end
+
+rule "O fio da placa do contacto está solto?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(8)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O fio da placa do contacto esta solto?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(8, 1);
+		else
+			$t.setComponente(8, 0);
+			
+		update($t);
+end
+
+rule "Existe mau contacto entre a placa de contacto e o ponto de soldadura ?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(9)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("Existe mau contacto entre a placa de contacto e o ponto de soldadura ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(9, 1);
+		else
+			$t.setComponente(9, 0);
+			
+		update($t);
+end
+
+rule "A válvula está a funcionar corretamente?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(10)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("A válvula esta a funcionar corretamente?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(10, 1);
+		else
+			$t.setComponente(10, 0);
+			
+		update($t);
+end
+
+rule "As rodas dianteiras  giram com força manual ? "
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(11)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("As rodas dianteiras  giram com forca manual ? ");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(11, 1);
+		else
+			$t.setComponente(11, 0);
+			
+		update($t);
+end
+
+rule "As escovas estão em falta/demasiado curtas?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(12)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("As escovas estao em falta/demasiado curtas?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(12, 1);
+		else
+			$t.setComponente(12, 0);
+			
+		update($t);
+end
+
+rule "As ligações entre o íman e a unidade reversa estão quebradas?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(13)==-1); 
+    then
+    	Scanner input = new Scanner(System.in);
+        System.out.print("As ligaçoes entre o iman e a univade reversa estao quebradas?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(13, 1);
+		else
+			$t.setComponente(13, 0);
+			
+		update($t);
+end
+
+rule "A unidade reversa arranca no momento em que o transformador é virada para cima?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(14)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("A unidade reversa arranca no momento em que o transformador e virada para cima?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(14, 1);
+		else
+			$t.setComponente(14, 0);
+			
+		update($t);
+end
+
+rule "O interruptor tem contacto com a placa de contacto??"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(15)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O interruptor tem contacto com a placa de contacto?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(15, 1);
+		else
+			$t.setComponente(15, 0);
+			
+		update($t);
+end
+
+rule "A mola do interruptor tem pouca tensão?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(16)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("A mola do interruptor tem pouca tensao?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(16, 1);
+		else
+			$t.setComponente(16, 0);
+			
+		update($t);
+end
+
+rule "O indutor faz barulho quando o controlador de velocidade está ligado?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(17)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O indutor faz barulho quando o controlador de velocidade esta ligado?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(17, 1);
+		else
+			$t.setComponente(17, 0);
+			
+		update($t);
+end
+
+rule "O indutor não faz barulho quando o controlador de velocidade está ligado?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(18)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O indutor nao faz barulho quando o controlador de velocidade esta ligado?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(18, 1);
+		else
+			$t.setComponente(18, 0);
+			
+		update($t);
+end
+
+rule "Há corrente na catenária?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(19)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("Ha corrente na catenaria?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(19, 1);
+		else
+			$t.setComponente(19, 0);
+			
+		update($t);
+end
+
+rule "A alavanca seletora está configurada para operar a catenária? "
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(20)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("A alavanca seletora esta configurada para operar a catenaria?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(20, 1);
+		else
+			$t.setComponente(20, 0);
+			
+		update($t);
+end
+
+rule "A alavanca seletora está a funcionar corretamente ?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(21)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("A alavanca seletora esta a funcionar corretamente ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(21, 1);
+		else
+			$t.setComponente(21, 0);
+			
+		update($t);
+end
+
+rule "Há contacto entre a mola da alavanca seletora e o pantógrafo? "
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(22)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("Ha contacto entre a mola da alavanca seletora e o pantografo?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(22, 1);
+		else
+			$t.setComponente(22, 0);
+			
+		update($t);
+end
+
+rule "As molas do pantógrafo estão bem conectadas ?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(23)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("As molas do pantógrafo estao bem conectadas ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(23, 1);
+		else
+			$t.setComponente(23, 0);
+			
+		update($t);
+end
+
+rule "O pantógrafo está dobrado?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(24)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O pantografo esta dobrado?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(24, 1);
+		else
+			$t.setComponente(24, 0);
+			
+		update($t);
+end
+
+rule "As pontas de soldadura entre o indutor e a unidade reversa ou entre o indutor e a placa de escova estão bem??"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(25)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("As pontas de soldadura entre o indutor e a unidade reversa ou entre o indutor e a placa de escova estao bem?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(25, 1);
+		else
+			$t.setComponente(25, 0);
+			
+		update($t);
+end
+
+rule "O interruptor entre a unidade reversa tem contacto com a placa de contacto para todas as definições?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(26)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O interruptor entre a unidade reversa tem contacto com a placa de contacto para todas as definicoes?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(26, 1);
+		else
+			$t.setComponente(26, 0);
+			
+		update($t);
+end
+
+rule "O corredor da unidade reversa está conectado?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(27)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O corredor da unidade reversa esta conectado?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(27, 1);
+		else
+			$t.setComponente(27, 0);
+			
+		update($t);
+end
+
+rule "O pin do corredor que empurra está dobrado?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(28)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O pin do corredor que empurra esta dobrado?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(28, 1);
+		else
+			$t.setComponente(28, 0);
+			
+		update($t);
+end
+
+rule "O gancho para a mola do corredor está dobrado?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(29)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O gancho para a mola do corredor esta dobrado?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(29, 1);
+		else
+			$t.setComponente(29, 0);
+			
+		update($t);
+end
+
+rule "Ao colocar o corpo na frame, há algum fio contra o interruptor?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(30)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("Ao colocar o corpo na frame, ha algum fio contra o interruptor?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(30, 1);
+		else
+			$t.setComponente(30, 0);
+			
+		update($t);
+end
+
+rule "O interruptor tem contacto com a placa de contacto?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(31)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("O interruptor tem contacto com a placa de contacto ?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("nao"))
+        	$t.setComponente(31, 1);
+		else
+			$t.setComponente(31, 0);
+			
+		update($t);
+end
+
+rule "A unidade reversa tem interruptores e pontos de contacto?"
+    salience 50
+    when
+        $t:MarklinTrain(getComponente(32)==-1); 
+    then
+        Scanner input = new Scanner(System.in);
+		System.out.print("A unidade reversa tem interruptores e pontos de contacto?");
+		String m = input.nextLine();
+        
+        if(m.equalsIgnoreCase("sim"))
+        	$t.setComponente(32, 1);
+		else
+			$t.setComponente(32, 0);
 			
 		update($t);
 end
