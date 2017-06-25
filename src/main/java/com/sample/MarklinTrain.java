@@ -1,6 +1,8 @@
 package com.sample;
 
-public class MarklinTrain implements Constants{
+import java.util.Observable;
+
+public class MarklinTrain extends Observable implements Constants{
 	boolean componentes[];
 	
 	public MarklinTrain(){

@@ -1,7 +1,9 @@
-package marklinTrain;
+package com.sample;
 
 interface Constants {
 	static final int TRAIN_COMPONENTS_SIZE = 20;
+	
+	
 	static final String FIX_0 = "Ajuste o acoplador com a ajuda do indicador de acoplamento 7001 ou substítuir o acoplador (ver capítulo 7.3 para mais detalhes).";
 	static final String FIX_1 = "A fonte deste problema poderá ser alcançada através da localização de uma queimadura no interior do corpo.";
 	static final String FIX_2 = "A fonte deste problema poderá ser alcançada através da localização de uma queimadura no interior do corpo.";
