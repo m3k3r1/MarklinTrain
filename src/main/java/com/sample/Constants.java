@@ -19,7 +19,7 @@ interface Constants {
 	static final String FIX_13 = "Repor ou voltar a soldar o(s) fio(s).";
 	static final String FIX_14 = "A mola de corredor da unidade reversa tem de ser ajustada.";
 	static final String FIX_15 = "Pressionar a mola de tensão para baixo com uma pinça até soltar o interruptor.";
-	static final String FIX_16 = "Dobrar cuidadosamente a ponte ligeiramente para cima e substítuir o interruptor (nº 22683) se necessário";
+	static final String FIX_16 = "Dobrar cuidadosamente a ponte ligeiramente para cima e substítuir o interruptor (nº 22683) se necessário.";
 	static final String FIX_17 = "Usando uma chave de fendas isolada, cuidadosamente levantar um dos dedos para passar corrente (ver secção 9.1.2 caso a locomotiva funcionar depois deste passo).";
 	static final String FIX_18 = "Usando uma chave de fendas isolada, pressionar com cuidado e um de cada vez, os pontos de contacto contra os 'switching drums'. Se a locomotiva funcionar agora, tanto num caso como no anterior, então os pontos de contacto não têm tensão suficiente.";
 	static final String FIX_19 = "Verificar as conexões no sistema da catenária.";
